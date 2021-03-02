@@ -20,29 +20,29 @@
             </div>
 
 
-            <div class="row">
-                <div class="details col-8">
                     <form action="/action_page.php">
+            <div class="row">
+                <div class="details  col-lg-8 col-md-8 col-sm-12">
                         <div class="form-group">
+                            <input type="hidden" name="_csrf" value="<%=csrf%>">
                             <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name">
+                            <input type="text" class="form-control" name="clientName" id="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" class="form-control" name="email" id="email" required>
                         </div>
                         <div class="form-group">
                             <label for="address">Address:</label>
-                            <input type="address" class="form-control" id="pwd">
+                            <input type="address" class="form-control" name="address" id="address" required>
                         </div>
                         <div class="form-group">
                             <label for="description">Details:</label>
-                            <textarea type="description" class="form-control" id="description" rows="6"></textarea>
+                            <textarea type="description" class="form-control" name="description" id="description" rows="6" required></textarea>
                         </div>
-                    </form>
                 </div>
 
-                <div class="col-4 mt-4">
+                <div class="col-lg-4 col-md-4 col-sm-12 mt-4">
                     <div class="totals">
                         <div class="totals-item">
                             <label>Subtotal </label>
@@ -59,13 +59,16 @@
                         <div class="totals-item totals-item-total">
                             <label>Grand Total </label>
                             <div class="totals-value" id="cart-total">0</div>
+                            <input type="hidden" name="amount" class="amount-total" >
                         </div>
                     </div>
 
-                    <button class="checkout">Checkout</button>
+                    <button type="submit" class="checkout">Checkout</button>
 
                 </div>
             </div>
+                    </form>
+
         </div>
 
 

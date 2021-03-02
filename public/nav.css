@@ -220,9 +220,11 @@
  .list {
      padding-left: 2rem;
      margin: 0 auto;
+     width: fit-content;
  }
 
  .list .item {
+     width: max-content;
      position: relative;
      display: flex;
      align-items: center;
@@ -276,7 +278,7 @@
 
  .list .item .score:after {
      margin-right: 1rem;
-     content: "points";
+     content: "hours";
      opacity: 0.5;
  }
 

@@ -295,7 +295,8 @@ label {
     margin-top: 20px;
     padding: 6px 25px;
     /* background-color: #6b6; */
-    color: #fff;
+    color: black;
+    font-weight: 600;
     font-size: 25px;
   
 
@@ -307,6 +308,7 @@ label {
 
 .checkout:hover {
     background-color: #494;
+    color: #fff;
 
 }
 

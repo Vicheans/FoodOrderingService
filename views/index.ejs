@@ -48,8 +48,8 @@
                     <img src="<%=item.image%>" alt="">
                     <h5 class="card-title"><%=item.name%> <%=item.id%></h5>
                     <p class="card-text"><%=item.description%></p>
-                    <a href="javacript:void(0)" item-id="<%=item.id%>" class="btn btn-primary add">Add to Cart <i
-                            class="fa fa-shopping-cart" item-id="<%=item.id%>" aria-hidden="true"></i></a>
+                    <a href="javacript:void(0)" data-itemId="<%=item.id%>" class="btn btn-primary add">Add to Cart <i
+                            class="fa fa-shopping-cart" data-itemId="<%=item.id%>" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -86,26 +86,7 @@
 </main>
 
     <script>
-        const csrf = $('#_csrf').val();
 
-        $('.add').on('click', e=>{
-            const id = $(e.target).attr('item-id')
-            console.log(id)
-
-            $.ajax({
-                url: "/order?_csrf="+csrf,
-                method: "POST",
-                data: {id},
-                dataType: "JSON",
-                success: function (res) {
-                    console.log(res);
-                    alertFunction(res)
-                },
-                error: function (err) {
-                    console.log(res);
-                }
-            })
-        })
 
         
 

@@ -3,11 +3,11 @@ const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const httpMsgs = require("http-msgs");
 const csrf = require("csurf");
 const fs = require("fs");
-const menu = require('./config/menu')
-const order = require('./config/order')
+
+const httpMsgs = require("http-msgs");
+
 
 
 const app = express();
@@ -29,6 +29,13 @@ var csrfProtection = csrf();
 app.use(csrfProtection);
 
 
+const menu = require('./config/menu')
+const order = require('./config/order')
+const status = require('./config/status')
+const add = require('./controllers/add')
+const cart = require('./controllers/cart')
+const checkout = require('./controllers/status')
+
 
 
 app.get("/", (req,res)=>{
@@ -38,66 +45,81 @@ app.get("/", (req,res)=>{
     })
 })
 
+//add item to cart
+app.use('/order', add);
+//retrieve cart data
+app.use('/cart', cart);
 
-app.get('/cart', (req, res)=>{
-     httpMsgs.sendJSON(req, res, {
-       order
-     });
-})
+app.use('/status', checkout);
 
 
-app.post('/order', (req, res, next)=>{
-    const {id} = req.body;
+
+
+
+
+app.post('/updateOrder', (req, res, next) => {
+    const {
+        id, quantity
+    } = req.body;
 
     const findOrder = order.find(x => x.id == id);
-    
-    const quantity = (findOrder ? 
-        findOrder.quantity += 1 
-        : 
-        order.push({
-          orderId: order.length + 1,
-          ...menu.find(x => x.id == id),
-          quantity: 1 
-      }));
+    findOrder.quantity = quantity
 
-      httpMsgs.sendJSON(req, res, {
-        message: "Added to Cart",
+    httpMsgs.sendJSON(req, res, {
+        message: "Quantity updated",
         icon: "<i class='fa fa-check'></i>",
         alert: "alert-success"
     });
 })
 
-app.post('/updateOrder', (req, res, next) => {
-    const {
-        id
-    } = req.body;
-    // order.push({
-    //     orderId: order.length + 1,
-    //     ...menu.find(x => x.id == id)
-    // })
-
-    // httpMsgs.sendJSON(req, res, {
-    //     message: "Added to Cart",
-    //     icon: "<i class='fa fa-check'></i>",
-    //     alert: "alert-success"
-    // });
-})
-
 app.post('/cancelOrder', (req, res, next)=>{
      const {id} = req.body;
-    order.filter(x => x.itemId !== id)
-
+    	for (var i = 0; i < order.length; i++) {            
+    	    if (order[i].orderId == id) {
+                order.splice(i, 1)
+    	    }
+    	}
      httpMsgs.sendJSON(req, res, {
          message: "Removed from Cart",
          icon: "<i class='fa fa-check'></i>",
          alert: "alert-success"
      });
-    //  next();
+})
+
+//checkout route
+app.post("/checkout", (req,res, next)=>{
+
+    const {
+        clientName,
+        email,
+        description,
+        amount, address
+    } = req.body;
+
+    for(var i =0; i<order.length; i++){
+
+       status.push({
+           ...menu.filter(x => x.id == order[i].id),
+           clientName,
+           email,
+           description,
+           amount,address,
+           deliveryTime: new Date().getTime(),
+       })
+       
+    }
+
+     httpMsgs.sendJSON(req, res, {
+         message: "Checkout Successful, Check status to see time to delivery",
+         icon: "<i class='fa fa-check'></i>",
+         alert: "alert-success"
+     });
+
 })
 
 
 app.use(function (req, res, next) {
-    res.status(404).render("/error", {
+    res.status(404).render("error", {
         error: '404',
         msg: 'Oops ! Sorry We Can\'t Find That Page'
     });
@@ -106,7 +128,7 @@ app.use(function (req, res, next) {
 
 app.use(function (req, res, next) {
     res.status(500)
-        .render("/error", {
+        .render("error", {
             error: '500',
             msg: "Oops! Something broke, kindly refresh page and try again."
         });
