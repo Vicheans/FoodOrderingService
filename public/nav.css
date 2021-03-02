@@ -1,0 +1,289 @@
+ nav {
+     margin: 27px auto 0;
+
+     position: relative;
+     /* width: 590px; */
+     width: auto;
+     height: 50px;
+     background-color: #34495e;
+     border-radius: 8px;
+     font-size: 0;
+
+
+     /* border-radius: 33px; */
+     /* background: #e0e0e0; */
+     box-shadow: 16px 16px 31px #a1a1a1,
+     -16px -16px 31px #ffffff;
+
+     
+ }
+
+ nav a {
+     line-height: 50px;
+     height: 100%;
+     font-size: 15px;
+     display: inline-block;
+     position: relative;
+     z-index: 1;
+     text-decoration: none;
+     text-transform: uppercase;
+     text-align: center;
+     color: white;
+     cursor: pointer;
+
+ }
+
+ nav .animation {
+     position: absolute;
+     height: 100%;
+     top: 0;
+     z-index: 0;
+     transition: all .5s ease 0s;
+     border-radius: 8px;
+ }
+
+ a:nth-child(1) {
+     width: 100px;
+ }
+
+ a:nth-child(2) {
+     width: 110px;
+ }
+
+ a:nth-child(3) {
+     width: 100px;
+ }
+
+ a:nth-child(4) {
+     width: 160px;
+ }
+
+ a:nth-child(5) {
+     width: 120px;
+ }
+
+ nav .start-home,
+ a:nth-child(1):hover~.animation {
+     width: 100px;
+     left: 0;
+     background-color: #1abc9c;
+ }
+
+ nav .start-about,
+ a:nth-child(2):hover~.animation {
+     width: 110px;
+     left: 100px;
+     background-color: #e74c3c;
+ }
+
+ nav .start-blog,
+ a:nth-child(3):hover~.animation {
+     width: 100px;
+     left: 210px;
+     background-color: #3498db;
+ }
+
+ nav .start-portefolio,
+ a:nth-child(4):hover~.animation {
+     width: 160px;
+     left: 310px;
+     background-color: #9b59b6;
+ }
+
+ nav .start-contact,
+ a:nth-child(5):hover~.animation {
+     width: 120px;
+     left: 470px;
+     background-color: #e67e22;
+ }
+
+ body {
+     font-size: 12px;
+     font-family: sans-serif;
+     background: #e0e0e0;;
+ }
+
+ h1 {
+     text-align: center;
+     margin: 40px 0 40px;
+     text-align: center;
+     font-size: 30px;
+     color: #ecf0f1;
+     text-shadow: 2px 2px 4px #000000;
+     font-family: 'Cherry Swash', cursive;
+ }
+
+ p.foot {
+     position: absolute;
+     bottom: 20px;
+     width: 100%;
+     text-align: center;
+     color: #ecf0f1;
+     font-family: 'Cherry Swash', cursive;
+     font-size: 16px;
+ }
+
+ .foot span {
+     color: #2BD6B4;
+ }
+
+
+
+
+
+ /* /// */
+ @import url("https://fonts.googleapis.com/css?family=Red+Hat+Display:400,900&display=swap");
+
+ 
+ /* .center {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     z-index: 10;
+     font-family: "Red Hat Display", sans-serif;
+ } */
+
+ /* .top3 {
+     display: flex;
+     justify-content: center;
+     align-items: flex-end;
+     color: #4B4168;
+ }
+
+ .top3 .item {
+     box-sizing: border-box;
+     position: relative;
+     background: white;
+     width: 9rem;
+     height: 10rem;
+     text-align: center;
+     padding: 2.8rem 0 0;
+     margin: 1rem 1rem 2rem;
+     border-radius: 0.5rem;
+     transform-origin: bottom;
+     cursor: pointer;
+     transition: transform 200ms ease-in-out;
+     box-shadow: 0 0 4rem 0 rgba(0, 0, 0, 0.1), 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
+ }
+
+ .top3 .item .pic {
+     position: absolute;
+     top: -2rem;
+     left: 2.5rem;
+     width: 4rem;
+     height: 4rem;
+     border-radius: 50%;
+     background-size: cover;
+     background-position: center;
+     margin-right: 1rem;
+     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+ }
+
+ .top3 .item .pos {
+     font-weight: 900;
+     font-size: 1.5rem;
+     margin-bottom: 0.5rem;
+ }
+
+ .top3 .item .name {
+     font-size: 1.1rem;
+     margin-bottom: 0.5rem;
+ }
+
+ .top3 .item .score {
+     opacity: 0.5;
+ }
+
+ .top3 .item .score:after {
+     display: block;
+     content: "points";
+     opacity: 0.5;
+ }
+
+ .top3 .item.one {
+     width: 10rem;
+     height: 11rem;
+     padding-top: 3.5rem;
+ }
+
+ .top3 .item.one .pic {
+     width: 5rem;
+     height: 5rem;
+     left: 2.5rem;
+ }
+
+ .top3 .item:hover {
+     transform: scale(1.05);
+ } */
+
+ .list {
+     padding-left: 2rem;
+     margin: 0 auto;
+ }
+
+ .list .item {
+     position: relative;
+     display: flex;
+     align-items: center;
+     background: white;
+     height: 3rem;
+     /* border-radius: 4rem; */
+     margin-bottom: 2rem;
+     /* background: #EAA786; */
+     transform-origin: left;
+     cursor: pointer;
+     transition: transform 200ms ease-in-out;
+     border-radius: 23px;
+     background: #e0e0e0;
+     box-shadow: 15px 15px 30px #cecece,
+     -15px -15px 30px #f2f2f2;
+     /* box-shadow: 0 0 4rem 0 rgba(0, 0, 0, 0.1), 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3); */
+ }
+
+ .list .item .pos {
+     font-weight: 900;
+     position: absolute;
+     left: -2rem;
+     text-align: center;
+     font-size: 1.25rem;
+     width: 1.5rem;
+     color: black;
+     opacity: 0.6;
+     transition: opacity 200ms ease-in-out;
+ }
+
+ .list .item .pic {
+     width: 4rem;
+     height: 4rem;
+     border-radius: 50%;
+     background-size: cover;
+     background-position: center;
+     margin-right: 1rem;
+     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
+ }
+
+ .list .item .name {
+     flex-grow: 2;
+     flex-basis: 10rem;
+     font-size: 1.1rem;
+ }
+
+ .list .item .score {
+     margin-right: 1.5rem;
+     opacity: 0.5;
+ }
+
+ .list .item .score:after {
+     margin-right: 1rem;
+     content: "points";
+     opacity: 0.5;
+ }
+
+ .list .item:hover {
+     transform: scale(1.05);
+ }
+
+ .list .item:hover .pos {
+     opacity: 0.8;
+ }

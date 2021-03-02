@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Olateju</title>
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/nav.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div style="position: fixed; z-index: 100;">
+
+
+    <nav>
+        <a href="#" id="home-link" class="tab-link home">Items<i class="fa fa-home" aria-hidden="true"></i> </a>
+        <!-- <a href="#">About</a> -->
+        <a href="#" id="cart-link" class="tab-link cart">Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        <!-- <a href="#">Portefolio</a> -->
+        <a href="#" id="checkout-link" class="tab-link " style="white-space: nowrap;">Status </a>
+        <div class="animation start-home"></div>
+    </nav>
+    </div>
+    </div>
+
+    <main class="mt-4">
+
+
+    <div class="alert">
+        Welcome Home
+    </div>
+
+
+<div id="home" class="tab-item home-link">
+<div class="container mt-4">
+    <div class="row">
+        <%menu.map(item=>{%>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <img src="<%=item.image%>" alt="">
+                    <h5 class="card-title"><%=item.name%> <%=item.id%></h5>
+                    <p class="card-text"><%=item.description%></p>
+                    <a href="javacript:void(0)" item-id="<%=item.id%>" class="btn btn-primary add">Add to Cart <i
+                            class="fa fa-shopping-cart" item-id="<%=item.id%>" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <%})%>
+    </div>
+    <input type="hidden" id="_csrf" value="<%=csrf%>">
+</div>
+</div>
+
+
+<%-include ('partials/cart')%>
+
+
+
+
+<div id="checkout" class="tab-item checkout-link">
+    <div class="container mt-4">
+        <h3 class="font-weight-bold">Status</h3>
+
+
+        <div id="progress" class="mt-4">
+            <div class="center">
+              
+                <div id="delivery-status" class="list">
+                  
+                  
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+</main>
+
+    <script>
+        const csrf = $('#_csrf').val();
+
+        $('.add').on('click', e=>{
+            const id = $(e.target).attr('item-id')
+            console.log(id)
+
+            $.ajax({
+                url: "/order?_csrf="+csrf,
+                method: "POST",
+                data: {id},
+                dataType: "JSON",
+                success: function (res) {
+                    console.log(res);
+                    alertFunction(res)
+                },
+                error: function (err) {
+                    console.log(res);
+                }
+            })
+        })
+
+        
+
+
+         
+
+    </script>
+
+
+    <!-- <p class="foot">
+        By <span>Victor Olateju</span>
+    </p> -->
+
+
+    <script src="/index.js"></script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
